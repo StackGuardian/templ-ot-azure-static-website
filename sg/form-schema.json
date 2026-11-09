@@ -1,0 +1,191 @@
+{
+  "type": "object",
+  "required": [],
+  "properties": {
+    "name_prefix": {
+      "title": "Name prefix",
+      "type": "string",
+      "description": "Prefix for all resource names",
+      "default": "demo",
+      "pattern": "^[a-z][a-z0-9-]{1,15}$"
+    },
+    "location": {
+      "title": "Location",
+      "type": "string",
+      "description": "Azure location",
+      "default": "germanywestcentral",
+      "enum": [
+        "australiacentral",
+        "australiacentral2",
+        "australiaeast",
+        "australiasoutheast",
+        "austriaeast",
+        "belgiumcentral",
+        "brazilsouth",
+        "brazilsoutheast",
+        "canadacentral",
+        "canadaeast",
+        "centralindia",
+        "centralus",
+        "chilecentral",
+        "denmarkeast",
+        "eastasia",
+        "eastus",
+        "eastus2",
+        "francecentral",
+        "francesouth",
+        "germanynorth",
+        "germanywestcentral",
+        "indonesiacentral",
+        "israelcentral",
+        "italynorth",
+        "japaneast",
+        "japanwest",
+        "jioindiacentral",
+        "jioindiawest",
+        "koreacentral",
+        "koreasouth",
+        "malaysiawest",
+        "mexicocentral",
+        "newzealandnorth",
+        "northcentralus",
+        "northeurope",
+        "norwayeast",
+        "norwaywest",
+        "polandcentral",
+        "qatarcentral",
+        "southafricanorth",
+        "southafricawest",
+        "southcentralus",
+        "southindia",
+        "southeastasia",
+        "spaincentral",
+        "swedencentral",
+        "swedensouth",
+        "switzerlandnorth",
+        "switzerlandwest",
+        "uaecentral",
+        "uaenorth",
+        "uksouth",
+        "ukwest",
+        "westcentralus",
+        "westeurope",
+        "westindia",
+        "westus",
+        "westus2",
+        "westus3"
+      ],
+      "enumNames": [
+        "Australia Central (australiacentral)",
+        "Australia Central 2 (australiacentral2)",
+        "Australia East (australiaeast)",
+        "Australia Southeast (australiasoutheast)",
+        "Austria East (austriaeast)",
+        "Belgium Central (belgiumcentral)",
+        "Brazil South (brazilsouth)",
+        "Brazil Southeast (brazilsoutheast)",
+        "Canada Central (canadacentral)",
+        "Canada East (canadaeast)",
+        "Central India (centralindia)",
+        "Central US (centralus)",
+        "Chile Central (chilecentral)",
+        "Denmark East (denmarkeast)",
+        "East Asia (eastasia)",
+        "East US (eastus)",
+        "East US 2 (eastus2)",
+        "France Central (francecentral)",
+        "France South (francesouth)",
+        "Germany North (germanynorth)",
+        "Germany West Central (germanywestcentral)",
+        "Indonesia Central (indonesiacentral)",
+        "Israel Central (israelcentral)",
+        "Italy North (italynorth)",
+        "Japan East (japaneast)",
+        "Japan West (japanwest)",
+        "Jio India Central (jioindiacentral)",
+        "Jio India West (jioindiawest)",
+        "Korea Central (koreacentral)",
+        "Korea South (koreasouth)",
+        "Malaysia West (malaysiawest)",
+        "Mexico Central (mexicocentral)",
+        "New Zealand North (newzealandnorth)",
+        "North Central US (northcentralus)",
+        "North Europe (northeurope)",
+        "Norway East (norwayeast)",
+        "Norway West (norwaywest)",
+        "Poland Central (polandcentral)",
+        "Qatar Central (qatarcentral)",
+        "South Africa North (southafricanorth)",
+        "South Africa West (southafricawest)",
+        "South Central US (southcentralus)",
+        "South India (southindia)",
+        "Southeast Asia (southeastasia)",
+        "Spain Central (spaincentral)",
+        "Sweden Central (swedencentral)",
+        "Sweden South (swedensouth)",
+        "Switzerland North (switzerlandnorth)",
+        "Switzerland West (switzerlandwest)",
+        "UAE Central (uaecentral)",
+        "UAE North (uaenorth)",
+        "UK South (uksouth)",
+        "UK West (ukwest)",
+        "West Central US (westcentralus)",
+        "West Europe (westeurope)",
+        "West India (westindia)",
+        "West US (westus)",
+        "West US 2 (westus2)",
+        "West US 3 (westus3)"
+      ]
+    },
+    "advanced_settings": {
+      "type": "object",
+      "properties": {
+        "show_advanced_settings": {
+          "type": "boolean",
+          "title": "Show advanced settings",
+          "default": false
+        }
+      },
+      "dependencies": {
+        "show_advanced_settings": {
+          "oneOf": [
+            {
+              "properties": {
+                "show_advanced_settings": {
+                  "enum": [
+                    false
+                  ]
+                }
+              }
+            },
+            {
+              "properties": {
+                "show_advanced_settings": {
+                  "enum": [
+                    true
+                  ]
+                },
+                "log_retention_days": {
+                  "title": "Log retention days",
+                  "type": "number",
+                  "description": "Retention of the storage access logs in Log Analytics",
+                  "default": 90
+                },
+                "tags": {
+                  "title": "Tags",
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "description": "Additional tags for all resources",
+                  "default": {}
+                }
+              }
+            }
+          ]
+        }
+      }
+    }
+  },
+  "title": "Azure Static Website (Storage Account)"
+}
