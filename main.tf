@@ -6,7 +6,7 @@ locals {
       ManagedBy   = "opentofu"
       Repository  = "tf-azure-static-website"
     },
-    var.tags,
+    var.advanced_settings.tags,
   )
 }
 

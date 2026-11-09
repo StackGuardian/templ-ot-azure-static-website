@@ -54,8 +54,14 @@ tofu apply
 |---|---|---|
 | `name_prefix` | Prefix for all resource names | `"demo"` |
 | `location` | Azure location | `"germanywestcentral"` |
-| `tags` | Additional tags for all resources | `{}` |
+| `advanced_settings` | Object with the settings below, all optional | `{}` |
+
+`advanced_settings` attributes (shown as "Advanced Settings" in the StackGuardian form):
+
+| Name | Description | Default |
+|---|---|---|
 | `log_retention_days` | Access log retention in Log Analytics | `90` |
+| `tags` | Additional tags for all resources | `{}` |
 
 To change the content, edit the files in `site/` and run `tofu apply`.
 

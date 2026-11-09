@@ -15,19 +15,18 @@ variable "location" {
   default     = "germanywestcentral"
 }
 
-variable "tags" {
-  description = "Additional tags for all resources"
-  type        = map(string)
-  default     = {}
-}
-
-variable "log_retention_days" {
-  description = "Retention of the storage access logs in Log Analytics"
-  type        = number
-  default     = 90
+# Grouped so the StackGuardian form can show them in one "Advanced Settings" section.
+variable "advanced_settings" {
+  description = "Settings most deployments keep at their defaults"
+  type = object({
+    log_retention_days = optional(number, 90)      # Retention of the storage access logs in Log Analytics
+    tags               = optional(map(string), {}) # Additional tags for all resources
+  })
+  default  = {}
+  nullable = false
 
   validation {
-    condition     = var.log_retention_days >= 30 && var.log_retention_days <= 730
+    condition     = var.advanced_settings.log_retention_days >= 30 && var.advanced_settings.log_retention_days <= 730
     error_message = "Log Analytics retention must be between 30 and 730 days."
   }
 }
