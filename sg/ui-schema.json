@@ -1,15 +1,30 @@
 {
+  "name_prefix": {
+    "ui:title": "Name Prefix",
+    "ui:description": "Prefix for all resource names"
+  },
+  "location": {
+    "ui:title": "Location",
+    "ui:description": "Azure location"
+  },
+  "advanced_settings": {
+    "show_advanced_settings": {
+      "ui:title": "Show advanced settings"
+    },
+    "log_retention_days": {
+      "ui:title": "Log Retention Days"
+    },
+    "ui:order": [
+      "show_advanced_settings",
+      "log_retention_days",
+      "tags"
+    ],
+    "ui:title": "Advanced Settings",
+    "ui:description": "Optional settings, most deployments keep the defaults"
+  },
   "ui:order": [
     "name_prefix",
     "location",
     "advanced_settings"
-  ],
-  "advanced_settings": {
-    "ui:title": "Advanced Settings",
-    "ui:description": "Optional settings, most deployments keep the defaults",
-    "ui:order": [
-      "show_advanced_settings",
-      "*"
-    ]
-  }
+  ]
 }
