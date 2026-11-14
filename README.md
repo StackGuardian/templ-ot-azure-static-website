@@ -37,6 +37,8 @@ Accepted checkov findings (documented inline in the code):
 | CKV2_AZURE_1 | Microsoft-managed keys, customer-managed keys are out of scope |
 | CKV2_AZURE_40, CKV2_AZURE_41 | Provider needs shared key access, SAS tokens are not used |
 
+The Trivy scan (`trivy config`) accepts findings with `#trivy:ignore` comments above the resource. The reason is written in the same line.
+
 ## Usage
 
 Sign in with `az login` and set `ARM_SUBSCRIPTION_ID` to the target subscription.
@@ -87,7 +89,7 @@ tofu destroy
 ## Tests
 
 The GitLab pipeline (`.gitlab-ci.yml`) lints every push. Merge requests into `development` or `main` also run
-validation, the checkov scan and the unit tests. A tag runs all of these plus the integration tests, which deploy
+validation, the checkov and Trivy scans and the unit tests. A tag runs all of these plus the integration tests, which deploy
 real resources and destroy them again, and then creates a release. Integration tests run only when the CI/CD variables `AZURE_CLIENT_ID`, `AZURE_TENANT_ID` and `AZURE_SUBSCRIPTION_ID` are set: an app registration with a federated credential for GitLab OIDC and the audience `api://AzureADTokenExchange`.
 
 In GitLab, the `unit-tests` job also publishes its results as a JUnit test report, which you find in the **Tests** tab of the pipeline and of the merge request. The script `ci/tofu-json-to-junit.py` converts the output of `tofu test -json` to JUnit XML.

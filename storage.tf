@@ -1,5 +1,8 @@
 # The static website endpoint serves the $web container anonymously over HTTPS.
 # Everything else in the account stays private.
+#trivy:ignore:AVD-AZU-0012 The static website endpoint must be reachable from the internet
+#trivy:ignore:AVD-AZU-0057 Access logging is out of scope for the demo website
+#trivy:ignore:AVD-AZU-0058 LRS is enough for a demo website
 resource "azurerm_storage_account" "site" {
   #checkov:skip=CKV_AZURE_59:The static website endpoint must be reachable from the internet
   #checkov:skip=CKV_AZURE_35:The static website endpoint must be reachable from the internet
